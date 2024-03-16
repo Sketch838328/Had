@@ -1,0 +1,73 @@
+import React, { useState } from 'react';
+
+
+const ShoeStore = () => {
+  //state for user login status
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+
+  //State for email subscription
+  const [isSubscribed, setSubscribed] = useState(false);
+
+
+  //Map function for generating discount based on the shoe type
+  const getDiscount = (shoeType) => {
+    const discountMap = {
+      running: 10,
+      casual: 5,
+      formal: 15,
+    };
+    return discountMap[shoeType] || 0;
+  };
+  return (
+    <div>
+      <h1>Shoe Store </h1>
+      {/*Conditional rendering based on login status*/}
+      {isLoggedIn ? (
+        <p>Welcome back! Explore our latest collection.</p>
+      ) : (
+        <p>Please log in to access exclusive deals.</p>
+      )}
+      {/*Email subscription form.*/}
+      {!isSubscribed && (
+        <div>
+          <p>Subscribe to our newsletter and get additional discounts:</p>
+          <form>
+            <label>
+              Email:
+              <input type="email" />
+            </label>
+            <button
+              type="submit"
+              onClick={() => setSubscribed(true) || setLoggedIn(true)}
+              required
+            >
+              subscribe
+            </button>
+          </form>
+        </div>
+      )}
+      {/*Discount mapping example */}
+      <p>Discounts for different shoe types:</p>
+      <ul>
+        <li>Running Shoes: {getDiscount('running')}%off</li>
+        <li>Casual Shoes:{getDiscount('casual')}%off</li>
+        <li>Formal Shoes:{getDiscount('formal')}%off</li>
+      </ul>
+    </div>
+  );
+};
+export default ShoeStore;
+app.js
+import React from 'react';
+import ShoeStore from './ShoeStore';
+
+
+const App = () => {
+  return (
+    <div>
+      <ShoeStore />
+    </div>
+  );
+};
+export default App;
