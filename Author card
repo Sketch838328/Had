@@ -1,0 +1,110 @@
+App.js
+import React from'react';
+import AuthorCard from './AuthorCard';
+
+const App = () =>{
+  const authorData1= {
+    name:'Aman Kanojiya',
+    biography:'A prolific authoe with a passion for storytelling.',
+    books:['Its happen yesterday','Atomics Habits','Zestech'],
+
+  };
+
+  const authorData2 = {
+    name:'Salman Khan',
+    biography:'Award-winning Indian author exploring diverse themes.',
+    books:['The silent Hills','Echoes of tradition','Whispers of Tomorrow'],
+  };
+  const authorData3= {
+    name:'Shivom Kanojiya',
+    biography:'Bestselling author from India known for gripping thrillers.',
+    books:['Shadowa in the Mist','The Crimson Conspiracy','Fatal Deception'],
+  };
+
+  return(
+      <div className="app">
+      <AuthorCard author={authorData1}/>
+      <AuthorCard author={authorData2}/>
+      <AuthorCard author={authorData3}/>
+      </div>
+    );  
+};
+
+export default App;
+
+Index.css
+.app{
+  display:flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+
+/*ensure each card has some space around it*/
+
+.author-card{
+  margin: 10px;
+}
+
+AuthorCard.js
+import React from 'react';
+import './AuthorCard.css';
+
+const AuthorCard =({author}) => {
+	const {name,biography,books}=author;
+	return(
+		<div className="author-card">
+		<h2>{name}</h2>
+		<p>{biography}</p>
+		<h3>Books by {name}:</h3>
+		<ul>
+		{books.map((book,index) => (
+		<li key={index}>{book}</li>
+		))}
+		</ul>
+		</div>
+	);
+};
+export default AuthorCard;
+
+AuthorCard.css
+.author-card{
+	background-color: #f8f8f8;
+	border: 2px solid #4CAF50;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 20px;
+	width: 400px;
+
+}
+h2{
+	color: #4CAF50;
+	font-size: 24px;
+	margin-bottom: 10px;
+
+}
+p{
+	color: #333;
+	font-size: 20px;
+	margin-bottom: 10px;
+
+}
+ul{
+	padding: 0;
+	list-style: none;
+
+}
+li{
+	color: #555;
+	font-size: 14px;
+	margin-bottom: 8px;
+
+}
+/*Add some animation for more attractive appearance*/
+.author-card:hover{
+	transform:scale(1.05);
+	transition: transform 0.3e ease-in-out;
+}
