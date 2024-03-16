@@ -1,0 +1,52 @@
+import React,{ useState } from 'react';
+const TodoList =() => {
+  const [todos, setTodos] = useState([
+  { id: 1, text: 'Learn React', completed: false },
+  { id: 2,text: 'Build a todo App', completed: false },
+  { id: 3, text: 'Style with CSS', completed: false },
+  ]);
+  const handleToggle = (id) =>{
+    setTodos((prevTodos) => 
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        )
+      );
+  };
+  return (
+    <div className="todo-list">
+      <h2>Todo List </h2>
+      <ul>
+        {todos.map((todo) =>(
+          <li
+            key={todo.id}
+            className={todo.completed ? 'completed' : ''}
+            onClick={() => handleToggle(todo.id)}
+          >
+            {todo.completed ? <s>{todo.text}</s> : todo.text}
+          </li>
+        ))}
+      </ul>
+      <style>
+        {`  
+          .todo-list {
+            font-family: 'Arial', sans-serif;
+          }
+          ul {
+            list-style-type: none;
+            padding: 0;
+          }
+          li {
+            cursor: pointer;
+            margin-bottom:8px;
+          }
+          .completed{
+            text-decoration: line through;
+            color: #888;
+          }
+          }
+        `}
+      </style>
+    </div>
+  );
+};
+export default TodoList;
