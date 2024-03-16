@@ -1,0 +1,31 @@
+App.js
+import React from 'react';
+import SyntheticEventsDemo from './SyntheticEventsDemo';
+
+function App(){
+  return(
+    <div className="App">
+    <SyntheticEventsDemo/>
+    </div>
+    );
+}
+export default App;
+
+SyntheticEventsDemo.js
+import React from 'react';
+
+class SyntheticEventsDemo extends React.Component{
+  handleClick=(event)=>{
+    alert('Button clicked!');
+  };
+
+  render(){
+    return(
+      <div>
+      <h1>Synthetic Events Demo</h1>
+      <button onClick={this.handleClick}>Click me</button>
+      </div>
+      );
+  }
+}
+export default SyntheticEventsDemo;
