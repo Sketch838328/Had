@@ -1,0 +1,33 @@
+app.js
+import React, { useState, useEffect } from 'react';
+const FootballGame =()=>{
+  const[points,setPoints] = useState(0);
+  const[chatMessages,setChatMessages]=useState([]);
+  const[newMessage,setNewMessage]=useState('');
+
+  useEffect(()=>{
+    const intervalId=
+     setInterval(()=>setPoints(prev=>prev+Math.floor(Math.random()*5)+1),5000);
+    return () => clearInterval(intervalId);
+  },[]);
+
+  return(
+    <div>
+      <h1>Football Game</h1>
+      <p>Points:{points}</p>
+      <div>
+        <h2>Chat</h2>
+        <div style={{border:'1px solid #ccc',padding:'10px',height:'150px',overflowY:'auto'}}>
+          {chatMessages.map(({ text, time },index) => (
+            <div key={index}><strong>{time.toLocaleTimeString()}:</strong>{text}</div>
+          ))}
+          </div>
+          <input type="text" value={newMessage} onChange={e=>setNewMessage(e.target.value)} placeholder="Type your message..."/>
+          <button onClick={()=>setChatMessages([...chatMessages,{text:newMessage,time:new Date()}])}>Send</button>
+          </div>
+          </div>
+
+  );
+};
+
+export default FootballGame;
