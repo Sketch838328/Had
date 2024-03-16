@@ -1,0 +1,47 @@
+App.js
+import React from 'react';
+import './FlexboxFragment.css';
+ const FlexboxFragment = () => {
+  return(
+      <div className="flexbox-container">
+      <div className="flexbox-item python">Python</div>
+      <div className="flexbox-item java">Java</div>
+      <div className="flexbox-item javascript">JavaScript</div>
+      </div>
+
+    );
+ };
+
+ export default FlexboxFragment;
+CODe
+Flexboxfragment.css
+.flexbox-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.flexbox-item{
+  flex:1;
+  padding:20px;
+  border:1px solid #ccc;
+  margin:10px;
+  text-align: center;
+  font-size: 1.5em;
+}
+.python{
+  background-color: #3572A5;
+  color: #ffffff;
+
+}
+
+.java{
+  background-color: #5382a1;
+  color: #ffffff;
+  flex:2;/*make the java fragment twice as wide*/
+
+}
+.javascript{
+  background-color: #f1e05a;
+  color: #000000;
+}
