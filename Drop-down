@@ -1,0 +1,57 @@
+import React from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+function SubjectDropdown({year,subjects}){
+  return(
+    <Dropdown>
+    <Dropdown.Toggle variant= "primary" 
+   id={'dropdown-${year}'} className="dropdown-toggle">
+    {year}Subjects
+    </Dropdown.Toggle>
+
+    <Dropdown.Menu className="dropdown-menu">
+    {subjects.map((subject,index)=>(
+    <Dropdown.Item key={index} className="dropdown-item">
+    {subject}</Dropdown.Item>
+    ))}
+    </Dropdown.Menu>
+    </Dropdown>
+
+
+    );
+}
+
+function App(){
+  const FYSubjects=['Mathematics','Physics','Chemistry','Biology'];
+  const SYSubjects=['History','Geography','English','Economics'];
+  const TYSubjects=['Computer Science','Accounting','Business Studies','Psychology'];
+
+  return(
+  <div className="container">
+  <div className="row">
+  <div className="col">
+  <SubjectDropdown year="FY" subjects={FYSubjects}/>
+  </div>
+  <div className="col">
+  <SubjectDropdown year="SY" subjects={SYSubjects}/>
+  </div>
+  <div className="col">
+  <SubjectDropdown year="TY" subjects={TYSubjects}/>
+  </div>
+  </div>
+  </div>
+  );
+}
+export default App;
+index.css
+.dropdown-toggle{
+  padding: 10px 20px;
+margin: 20px
+}
+
+.dropdown-menu{
+  padding: 5px;
+}
+.dropdown-item{
+  padding:5px 20px;
+}
